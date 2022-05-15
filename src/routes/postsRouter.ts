@@ -1,6 +1,7 @@
 import {postsRepo} from "../repos/postsRepo";
 import express, {Request, Response} from "express"
 import {body, validationResult} from "express-validator";
+import {inputValidatorMiddleware} from "../middlewares/validatorMiddleware";
 
 export const postsRouter = express.Router()
 
@@ -25,7 +26,8 @@ postsRouter.post('/',
     body('bloggerId').isNumeric(),
     // body('bloggerName').isString(),
     (req:Request, res:Response) => {
-        const errors = validationResult(req);
+    //@ts-ignore
+        const errors = req.errors;
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 "errorsMessages": [

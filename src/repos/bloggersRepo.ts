@@ -41,7 +41,7 @@ export const bloggersRepo = {
         return false
     },
     findBloggerNameById(bloggerId: number) {
-        const bloggerNameById = bloggers.filter(b => b.id === +bloggerId)[0].name
+        const bloggerNameById = bloggers.filter(b => b.id === +bloggerId)[0]?.name
         if (bloggerNameById !== undefined) {
             return bloggerId
         } else {

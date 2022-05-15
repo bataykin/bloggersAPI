@@ -24,7 +24,8 @@ exports.postsRouter.get('/:id', (req, res) => {
 exports.postsRouter.post('/', (0, express_validator_1.body)('title').isString(), (0, express_validator_1.body)('shortDescription').isString(), (0, express_validator_1.body)('content').isString(), (0, express_validator_1.body)('bloggerId').isNumeric(), 
 // body('bloggerName').isString(),
 (req, res) => {
-    const errors = (0, express_validator_1.validationResult)(req);
+    //@ts-ignore
+    const errors = req.errors;
     if (!errors.isEmpty()) {
         return res.status(400).json({
             "errorsMessages": [

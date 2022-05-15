@@ -39,7 +39,8 @@ exports.bloggersRepo = {
         return false;
     },
     findBloggerNameById(bloggerId) {
-        const bloggerNameById = db_1.bloggers.filter(b => b.id === +bloggerId)[0].name;
+        var _a;
+        const bloggerNameById = (_a = db_1.bloggers.filter(b => b.id === +bloggerId)[0]) === null || _a === void 0 ? void 0 : _a.name;
         if (bloggerNameById !== undefined) {
             return bloggerId;
         }
